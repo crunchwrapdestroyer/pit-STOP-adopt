@@ -46,18 +46,30 @@ const resolvers = {
       }
       throw AuthenticationError
     },
-    // removeBook: async (parent, { bookId }, context) => {
+    saveDog: async (parent, { dogInput }, context) => {
 
-    //     if (context.user) {
-    //         const updatedUser = await User.findOneAndUpdate(
-    //             { _id: context.user._id },
-    //             { $pull: { savedBooks: { bookId: bookId } } },
-    //             { new: true}
-    //         );
-    //         return updatedUser
-    //     }
-    //     throw AuthenticationError
-    // },
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { savedDogs: dogInput } },
+          { new: true, runValidators: true }
+        );
+        return dogInput
+      }
+      throw AuthenticationError
+    },
+    removeDog: async (parent, { id }, context) => {
+
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { adopted: { _id: id } } },
+          { new: true }
+        );
+        return updatedUser
+      }
+      throw AuthenticationError
+    },
   }
 }
 
