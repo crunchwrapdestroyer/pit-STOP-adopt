@@ -30,6 +30,17 @@ const userSchema = new Schema(
                 family: String,
             }
         ],
+        savedDogs: [
+            {
+                name: String,
+                description: String,
+                image: String,
+                type: String,
+                weight: String,
+                height: String,
+                family: String,
+            }
+        ]
     }
 );
 

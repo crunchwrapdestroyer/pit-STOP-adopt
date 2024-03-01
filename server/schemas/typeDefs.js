@@ -1,5 +1,3 @@
-// const { gql } = require('apollo-server-express')
-
 const typeDefs = `#graphql
     type User {
         _id: ID!
@@ -7,7 +5,9 @@ const typeDefs = `#graphql
         email: String!
         adopted: [Dog]
     }
-    type Dog{
+
+    type Dog {
+      _id: ID!
       name: String!
       description: String!
       image: String!
@@ -32,6 +32,12 @@ const typeDefs = `#graphql
         user: User
     }
 
+    type Donate {
+        name: String!
+        email: String!
+        price: Float!
+    }
+
     type Query {
         me: User
     }
@@ -40,6 +46,9 @@ const typeDefs = `#graphql
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         adoptDog(dogInput: DogInput): Dog
+        saveDog(dogInput: DogInput): Dog
+        removeDog(id: ID!): Dog
+        donate(name: String!, email: String, price: Float!): Auth
     }
 `
 
