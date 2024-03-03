@@ -1,6 +1,6 @@
 import './App.css';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
 import Home from './pages/Home'
 import Footer from './components/Footer'
 
@@ -17,13 +17,9 @@ function App() {
     
     <ApolloProvider client={client}>
         <Nav />
+        <Outlet/>
         <Footer />
-        <Routes>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/" element={< />} />
-        <Route path="/" element={< />} />
-        <Route path="/" element={< />} /> */}
-      </Routes>
+       
 
     </ApolloProvider>
   );
