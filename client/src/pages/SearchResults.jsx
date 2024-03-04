@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useState } from 'react';
+
 
 const PitSearch = () => {
       const [results, setResults] = useState()
