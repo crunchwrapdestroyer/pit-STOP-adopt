@@ -4,6 +4,7 @@ const typeDefs = `#graphql
         username: String!
         email: String!
         adopted: [Dog]
+        saveDog: [Dog]
     }
 
     type Dog {
@@ -45,9 +46,9 @@ const typeDefs = `#graphql
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        adoptDog(dogInput: DogInput): Dog
-        saveDog(dogInput: DogInput): Dog
-        removeDog(id: ID!): Dog
+        adoptDog(dogInput: DogInput): User
+        saveDog(dogInput: DogInput): User
+        removeDog(id: ID!): User
         donate(name: String!, email: String, price: Float!): Auth
     }
 `
