@@ -5,7 +5,22 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 const PitSearch = () => {
-      
+      const [results, setResults] = useState()
+
+      function showResults(data) {
+        const name =  data.animals.map((data) => (
+          <table>	
+                      <tr>
+                      <td>Image: {data.photos.small}</td>
+                      <td>Name: {data.name}</td>
+                      <td>Age Group: {data.age}</td>
+                      <td><a href={data.url} target="_blank">Adopt Me</a></td>
+                      </tr>  
+          </table>
+                    ))
+        setResults( name )
+      }
+
   const getToken = async () => {
       try {
         const tokenUrl = 'https://api.petfinder.com/v2/oauth2/token';
@@ -31,9 +46,9 @@ const PitSearch = () => {
 
   const fetchData = async (token) => {
     try {
-      const apiUrl ='https://api.petfinder.com/v2/types/dog/breeds'
-        // TO DO: Refine api search URL to pitbull
-        // TO DO: Limit search results to 10?
+      const apiUrl ='https://api.petfinder.com/v2/animals?type=dog&breed=pit-bull-terrier&status=adoptable&limit=5'
+        // TO DO: Refine api search URL to pitbull --
+        // TO DO: Limit search results to 10? --
         // TO DO: Update key, secret, move to .env file, move to server side 
       const response = await fetch(apiUrl, {
         method: 'GET',
@@ -48,10 +63,14 @@ const PitSearch = () => {
   
       const data = await response.json();
       console.log(data);
+      console.log(data.animals[0].name)
+      showResults(data)
 
     }catch (error) {
       console.log(error)
     }
+
+    
   }
 
   return (
