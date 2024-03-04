@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import Home from './pages/Home';
 import PitSearch from './pages/SearchResults.jsx';
+import Adopt from './pages/Adopt.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,9 @@ const router = createBrowserRouter([
       }, {
         path: '/SearchResults',
         element: <PitSearch />
+      }, {
+        path: '/Adopt',
+        element: <Adopt />
       },
     ],
   },

@@ -71,8 +71,8 @@ const PitSearch = () => {
           </Col>
         </Row>
         <Row>
-          <Col className='button'>
-            <button onClick={getToken}>Search Dogs</button>
+          <Col>
+            <button className='searchbutton' onClick={getToken}>Search Dogs</button>
           </Col>
         </Row>
       </div>
