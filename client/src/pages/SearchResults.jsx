@@ -1,6 +1,10 @@
 //import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Row, Col } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
+
 
 const PitSearch = () => {
       const [results, setResults] = useState()
@@ -71,23 +75,47 @@ const PitSearch = () => {
     
   }
 
-
-
-
-
-    return (<div style={{padding: '100px'}}> <h1>Seach Page </h1>
-        <button onClick={getToken}>Search Dogs</button>
-         <p>See console log for all available data</p>
-
-        <div>
-      <h2>Style Me :)  </h2>
-    
-               {results}
-          
-
+  return (
+    <div className='searchpage'>
+      <div className='searchcontainer'> 
+        <h1>Search Page</h1>
+        <Row>
+          <Col>
+            <p>Search for a City</p>
+            <input type="text" />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <p>Miles from Location</p>
+            <input type="number" />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <button className='searchbutton' onClick={getToken}>Search Dogs</button>
+          </Col>
+        </Row>
+      </div>
+      <Col className='resultscontainer'>
+        <Row>
+          <Card className='card' style={{ width: '12rem' }}>
+            <Card.Body>
+            <Card.Img id='cardpic' src='./src/assets/cardprofile.jpg' alt= 'image' />
+              <Card.Title>Zeus</Card.Title>
+              <Card.Text>
+                <p>Age: 2</p>
+                <p>Location: Santa Rosa</p>
+                <p>spayed_neutered: false</p>
+                <p>house_trained: true</p>
+              </Card.Text>
+              <Button variant="primary">View Info</Button>
+            </Card.Body>
+          </Card>
+        </Row>
+      </Col>
     </div>
-    </div>
-            )
-  };
+  );
+}
   
   export default PitSearch;
