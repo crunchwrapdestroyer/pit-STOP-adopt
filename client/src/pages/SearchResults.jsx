@@ -8,19 +8,35 @@ import { useState } from 'react';
 
 const PitSearch = () => {
       const [results, setResults] = useState()
+      const [location, setLocation]= useState()
+
+      const openInNewTab = (url) => {
+        window.open(url, '_blank', 'noreferrer');
+      };
 
       function showResults(data) {
-        const name =  data.animals.map((data) => (
-          <table>	
-                      <tr>
-                      <td>Image: {data.photos.small}</td>
-                      <td>Name: {data.name}</td>
-                      <td>Age Group: {data.age}</td>
-                      <td><a href={data.url} target="_blank">Adopt Me</a></td>
-                      </tr>  
-          </table>
+        const pitResults =  data.animals.map((data) => (
+
+          <Card className='card' style={{ width: '12rem' }} key={data.id}>
+            <Card.Body>                   
+            <Card.Img id='cardpic' src={data.photos[0] ? data.photos[0].small : '#'} alt= 'image' />
+              <Card.Title>{data.name}</Card.Title>
+              <Card.Text>
+                <p>Age Group: {data.age}</p>
+                <p>{data.contact.address.city}, {data.contact.address.state} </p>
+              </Card.Text>
+              <Button variant="primary"  role="link"
+        onClick={() => openInNewTab(`${data.url}`)}>View Info</Button>
+              <p style={{lineHeight: '2px'}}>&nbsp;</p>
+              <Button variant="primary" >Save </Button>
+            </Card.Body>
+          </Card>
+
+
+
+
                     ))
-        setResults( name )
+        setResults( pitResults )
       }
 
   const getToken = async () => {
@@ -38,18 +54,17 @@ const PitSearch = () => {
         const token = response.data.access_token
         console.log(token)
         fetchData(token)
-       // res.json(response.data.access_token);
+       
       } catch (error) {
         console.log(error);
-      //  res.status(500).json({ error: 'Internal Server Error' });
+     
       }
     };
 
 
   const fetchData = async (token) => {
     try {
-      const apiUrl ='https://api.petfinder.com/v2/animals?type=dog&breed=pit-bull-terrier&status=adoptable&limit=5'
-        // TO DO: Refine api search URL to pitbull --
+      const apiUrl =`https://api.petfinder.com/v2/animals?type=dog&breed=pit-bull-terrier&status=adoptable&location=95023&limit=12`
         // TO DO: Limit search results to 10? --
         // TO DO: Update key, secret, move to .env file, move to server side 
       const response = await fetch(apiUrl, {
@@ -67,6 +82,7 @@ const PitSearch = () => {
       console.log(data);
       console.log(data.animals[0].name)
       showResults(data)
+      
 
     }catch (error) {
       console.log(error)
@@ -79,10 +95,10 @@ const PitSearch = () => {
     <div className='searchpage'>
       <div className='searchcontainer'> 
         <h1>Search Page</h1>
-        <Row>
+        {/* <Row>
           <Col>
             <p>Search for a City</p>
-            <input type="text" />
+            <input type="text" value={setLocation}/>
           </Col>
         </Row>
         <Row>
@@ -90,7 +106,7 @@ const PitSearch = () => {
             <p>Miles from Location</p>
             <input type="number" />
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col>
             <button className='searchbutton' onClick={getToken}>Search Dogs</button>
@@ -99,19 +115,7 @@ const PitSearch = () => {
       </div>
       <Col className='resultscontainer'>
         <Row>
-          <Card className='card' style={{ width: '12rem' }}>
-            <Card.Body>
-            <Card.Img id='cardpic' src='./src/assets/cardprofile.jpg' alt= 'image' />
-              <Card.Title>Zeus</Card.Title>
-              <Card.Text>
-                <p>Age: 2</p>
-                <p>Location: Santa Rosa</p>
-                <p>spayed_neutered: false</p>
-                <p>house_trained: true</p>
-              </Card.Text>
-              <Button variant="primary">View Info</Button>
-            </Card.Body>
-          </Card>
+          {results}
         </Row>
       </Col>
     </div>
