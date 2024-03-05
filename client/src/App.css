@@ -23,6 +23,13 @@
   margin-left: 6%;
 }
 
+/* Modal */
+
+.modal {
+  z-index: 20000;
+  margin-top: 50px;
+}
+
 .footer {
   position: fixed;
   bottom: 0;
