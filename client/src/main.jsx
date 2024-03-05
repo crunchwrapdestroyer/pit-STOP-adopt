@@ -14,10 +14,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
-      }, {
-        path: '/search',
-        element: <PitSearch />
-      }, {
+      },
+      {
         path: '/SearchResults',
         element: <PitSearch />
       }, {

@@ -7,21 +7,17 @@ import { useState } from 'react';
 
 
 const PitSearch = () => {
-      const [results, setResults] = useState()
+  const [location, setLocation] = useState(''); // State for location
+  const [distance, setDistance] = useState(''); // State for distance
 
-      function showResults(data) {
-        const name =  data.animals.map((data) => (
-          <table>	
-                      <tr>
-                      <td>Image: {data.photos.small}</td>
-                      <td>Name: {data.name}</td>
-                      <td>Age Group: {data.age}</td>
-                      <td><a href={data.url} target="_blank">Adopt Me</a></td>
-                      </tr>  
-          </table>
-                    ))
-        setResults( name )
-      }
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === 'location') {
+      setLocation(value);
+    } else if (name === 'distance') {
+      setDistance(value);
+    }
+  };
 
   const getToken = async () => {
       try {
@@ -48,7 +44,7 @@ const PitSearch = () => {
 
   const fetchData = async (token) => {
     try {
-      const apiUrl ='https://api.petfinder.com/v2/animals?type=dog&breed=pit-bull-terrier&status=adoptable&limit=5'
+      const apiUrl =`https://api.petfinder.com/v2/animals?type=dog&breed=pit-bull-terrier&status=adoptable&location=${location}&distance=${distance}&limit=5`
         // TO DO: Refine api search URL to pitbull --
         // TO DO: Limit search results to 10? --
         // TO DO: Update key, secret, move to .env file, move to server side 
@@ -71,8 +67,6 @@ const PitSearch = () => {
     }catch (error) {
       console.log(error)
     }
-
-    
   }
 
   return (
@@ -82,38 +76,21 @@ const PitSearch = () => {
         <Row>
           <Col>
             <p>Search for a City</p>
-            <input type="text" />
+            <input type="text" name="location" value={location} onChange={handleChange} /> 
           </Col>
         </Row>
         <Row>
           <Col>
             <p>Miles from Location</p>
-            <input type="number" />
+            <input type="number" name="distance" value={distance} onChange={handleChange} /> 
           </Col>
         </Row>
         <Row>
           <Col>
-            <button className='searchbutton' onClick={getToken}>Search Dogs</button>
+            <button className='searchbutton' onClick={() => getToken(location, distance)}>Search Dogs</button> 
           </Col>
         </Row>
       </div>
-      <Col className='resultscontainer'>
-        <Row>
-          <Card className='card' style={{ width: '12rem' }}>
-            <Card.Body>
-            <Card.Img id='cardpic' src='./src/assets/cardprofile.jpg' alt= 'image' />
-              <Card.Title>Zeus</Card.Title>
-              <Card.Text>
-                <p>Age: 2</p>
-                <p>Location: Santa Rosa</p>
-                <p>spayed_neutered: false</p>
-                <p>house_trained: true</p>
-              </Card.Text>
-              <Button variant="primary">View Info</Button>
-            </Card.Body>
-          </Card>
-        </Row>
-      </Col>
     </div>
   );
 }
