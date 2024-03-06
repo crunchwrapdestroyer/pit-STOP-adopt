@@ -37,9 +37,10 @@
 }
 
 body {
-  background-color: antiquewhite;
+  background-color: white;
   background-size: cover;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 .brand-container {
@@ -63,27 +64,102 @@ body {
   left: -10%;
   top: 0%;
   max-width:110%;
+  height: 620px;
 }
 
 #hero2 {
   position: absolute;
   left: 0;
-  top: 1200px;
-  width: 100vw; /* Take the entire width of the viewport */
-  height: auto; /* Maintain aspect ratio */
-  margin: 0; /* Remove any margin */
-  padding: 0; /* Remove any padding */
+  top: 1400px; 
+  width: 100vw;
+  height: auto;
+  margin: 0; 
+  padding: 0;
 }
 
-.background-container {
+#welcomemessage {
   position: absolute;
-  top: 8%; /* Position below hero1 */
+  top: 620px;
+  padding: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#childpic {
+  position: absolute;
+  width: 60%;
+  top: 985px;
+  left: 130px;
+  z-index: 90
+}
+
+#walk {
+  position: absolute;
+  top: -300px;
+  width: 300px;
+}
+
+.processcontainer {
+  transform: translateY(950px) translatex(63%);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#processsteps {
+  font-size: 20px;
+  line-height: 1.5; 
+}
+
+#aspca {
+  position: absolute;
+  transform: translateY(-20px);
+  width: 400px;
+}
+
+.aspcabutton {
+  height: 45px;
+  width: 130px;
+  background-color: rgb(0, 52, 121);
+  color: white;
+  font-size: 16px;
+  transform: translateY(-50px) translateX(120px);
+  border-radius: 25px; 
+}
+
+.aspcabutton:hover {
+  background-color: rgb(0, 0, 89);
+}
+
+#consider {
+  position: absolute;
+  top: 35%;
+  width: 415px;
+  line-height: 1.3; 
+  text-align: center;
+}
+
+.aspcacontainer {
+  position: absolute;
+  top: 285%;
+  height: 450px;
+  width: 400px;
+  right: 11%;
+}
+.background-container1 {
+  position: absolute;
+  top: 0%;
   width: 50%;
-  height: 320%;
+  height: 180%;
   left: 0;
-  background-color: rgb(175, 173, 173);
-  opacity: 0.7;
+  background-color: antiquewhite;
   z-index: -1;
+}
+.background-container2 {
+  position: absolute;
+  top: 161%; 
+  width: 50%;
+  height: 180%;
+  left: 0;
+  background-color:antiquewhite;
+  z-index: -10;
 }
 
 @media (max-width: 768px) {
