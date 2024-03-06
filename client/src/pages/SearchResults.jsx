@@ -3,12 +3,17 @@ import axios from 'axios';
 import { Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
 
 const PitSearch = () => {
       const [results, setResults] = useState()
-      const [location, setLocation]= useState()
+      const [gender, setGender] = useState('')
+      const [age, setAge] = useState('')
+      const [children, setChildren] = useState('')
+      const [location, setLocation]= useState('')
+      const [distance, setDistance] = useState('')
 
       const openInNewTab = (url) => {
         window.open(url, '_blank', 'noreferrer');
@@ -64,8 +69,7 @@ const PitSearch = () => {
 
   const fetchData = async (token) => {
     try {
-      const apiUrl =`https://api.petfinder.com/v2/animals?type=dog&breed=pit-bull-terrier&status=adoptable&location=95023&limit=12`
-        // TO DO: Limit search results to 10? --
+      const apiUrl =`https://api.petfinder.com/v2/animals?type=dog&breed=pit-bull-terrier&status=adoptable&gender=${gender}&age=${age}&good_with_children=${children}&location=${location}&distance=${distance}`
         // TO DO: Update key, secret, move to .env file, move to server side 
       const response = await fetch(apiUrl, {
         method: 'GET',
@@ -79,8 +83,9 @@ const PitSearch = () => {
       }
   
       const data = await response.json();
+      console.log(apiUrl)
       console.log(data);
-      console.log(data.animals[0].name)
+      //console.log(data.animals[0].name)
       showResults(data)
       
 
@@ -95,18 +100,46 @@ const PitSearch = () => {
     <div className='searchpage'>
       <div className='searchcontainer'> 
         <h1>Search Page</h1>
-        {/* <Row>
-          <Col>
-            <p>Search for a City</p>
-            <input type="text" value={setLocation}/>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p>Miles from Location</p>
-            <input type="number" />
-          </Col>
-        </Row> */}
+
+
+        <Form>
+        <Form.Label htmlFor="inputPassword5">Select Gender</Form.Label>
+        <Form.Select aria-label="Default select example" value={gender} onChange={(e) => setGender(e.target.value)}>
+      <option value="">No preference</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </Form.Select>
+    <Form.Label htmlFor="inputPassword5">Age Group</Form.Label>
+        <Form.Select aria-label="Default select example" value={age} onChange={(e) => setAge(e.target.value)}>
+      <option value="">No preference</option>
+      <option value="baby">Puppy</option>
+      <option value="young">Young</option>
+      <option value="adult">Adult</option>
+      <option value="senior">Senior</option>
+    </Form.Select>
+    <Form.Label htmlFor="inputPassword5">Good with children?</Form.Label>
+        <Form.Select aria-label="Default select example" value={children} onChange={(e) => setChildren(e.target.value)}>
+      <option value="0">No preference</option>
+      <option value="1">Yes please</option>
+    </Form.Select>
+    <Form.Label htmlFor="inputPassword5">Search location with zip cole</Form.Label>
+      <Form.Control
+        type="text"
+        id="inputPassword5"
+        aria-describedby="passwordHelpBlock"
+        value={location} onChange={(e) => setLocation(e.target.value)}
+      />
+      <Form.Label htmlFor="inputPassword5">Max distance radius</Form.Label>
+        <Form.Select aria-label="Default select example" value={distance} onChange={(e) => setDistance(e.target.value)}>
+      <option value="">No preference</option>
+      <option value="25">25 mi</option>
+      <option value="50">50 mi</option>
+      <option value="75">75 mi</option>
+      <option value="100">100 mi</option>
+    </Form.Select>
+      
+        </Form>
+
         <Row>
           <Col>
             <button className='searchbutton' onClick={getToken}>Search Dogs</button>
