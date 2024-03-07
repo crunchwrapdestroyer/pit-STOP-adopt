@@ -1,12 +1,13 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Image from 'react-bootstrap/Image';
 
 function Navigation() {
   return (
     <Navbar className="navbar">
         <Container className="brand-container">
-        <Navbar.Brand id='brand' href='/'>Pit STOP Adopt</Navbar.Brand>
+        <Navbar.Brand id='brand' href='/'><Image src="../src/assets/pit.png" alt="Pitbull Icon" id='pitbull'/>Pit STOP Adopt</Navbar.Brand>
         </Container>
         <Container className="nav-container">
             <Navbar.Collapse id="basic-navbar-nav">

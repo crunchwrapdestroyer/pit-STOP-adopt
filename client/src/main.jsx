@@ -5,6 +5,7 @@ import App from './App.jsx';
 import Home from './pages/Home';
 import PitSearch from './pages/SearchResults.jsx';
 import Adopt from './pages/Adopt.jsx'
+import Contact from './pages/Contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       }, {
         path: '/Adopt',
         element: <Adopt />
+      },
+      {
+        path: '/Contact',
+        element: <Contact />
       },
     ],
   },
