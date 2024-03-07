@@ -92,8 +92,6 @@ const PitSearch = () => {
     }catch (error) {
       console.log(error)
     }
-
-    
   }
 
   return (

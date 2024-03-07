@@ -12,57 +12,66 @@
 .nav-container .nav-link {
   color: whitesmoke; 
   text-decoration: none;
+  
 }
 
 .nav-container .navbar-nav {
   color: whitesmoke; 
-  transform: translateX(28%);
+  transform: translateX(-20%) translateY(10px);
+  width: 800px
 }
 
 .nav-container .nav-link {
   margin-left: 6%;
 }
 
-/* Modal */
-
-.modal {
-  z-index: 20000;
-  margin-top: 50px;
+#pitbull {
+  width: 70px;
+  transform: translateX(-10px) translateY(-10px);
 }
 
 .footer {
   position: fixed;
-  bottom: 0;
+  bottom: 00px;
   width: 100%;
-  height: 20px;
+  height: 30px;
   background-color: black;
   color: white;
   text-align: center;
-  padding: 10px 0; 
-  left: 0%;
+  padding: 10px; 
   z-index: 5;
+}
+
+.footerlinks {
+  text-decoration: none;
+  color: whitesmoke;
+  margin-right: 95px;
+  transform: translateX(400px) translateY(-15px);
+}
+
+#home-container {
+  background-color: white;
 }
 
 body {
   background-color: antiquewhite;
   background-size: cover;
   background-attachment: fixed;
+  overflow-x: hidden;
+  
 }
 
-/* .brand-container {
-  transform: translateY(23px);
-}  */
+.brand-container {
+  transform: translateY(-4px) translateX(5px);
+}
 
 #brand {
   font-size: xx-large;
   color: whitesmoke;
   text-decoration: none;
-  margin-left: 5%;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
-}
-
-.homepage {
-  top: 20%;
+  margin-left: 6%;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  transform: translateY(15px)
 }
 
 #hero1 {
@@ -70,39 +79,129 @@ body {
   left: -10%;
   top: 0%;
   max-width:110%;
+  height: 620px;
 }
 
 #hero2 {
   position: absolute;
   left: 0;
-  top: 1200px;
-  width: 100vw; /* Take the entire width of the viewport */
-  height: auto; /* Maintain aspect ratio */
-  margin: 0; /* Remove any margin */
-  padding: 0; /* Remove any padding */
+  top: 1350px; 
+  width: 100vw;
+  height: auto;
+  margin: 0; 
+  padding: 0;
 }
 
-.background-container {
+#welcomemessage {
   position: absolute;
-  top: 8%; /* Position below hero1 */
+  top: 620px;
+  padding: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#childpic {
+  position: absolute;
+  width: 25%;
+  top: -300px;
+  left: 50px;
+  z-index: 90
+}
+
+#walk {
+  position: absolute;
+  transform: translateX(86px);
+  top: 1000px;
+  width: 500px;
+}
+
+.processcontainer {
+  transform: translateY(950px) translatex(63%);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#processsteps {
+  font-size: 20px;
+  line-height: 1.5; 
+}
+
+#aspca {
+  position: absolute;
+  transform: translateY(-20px);
+  width: 400px;
+}
+
+.about {
+  position: absolute;
+  width: 500px;
+  top: 2010px;
+  left: 8%;
+  padding: 40px;
+  text-align: center;
+  font-size: 20px;
+}
+
+#about {
+  font-size: 30px;
+  text-decoration: underline;
+}
+
+.aspcabutton {
+  height: 45px;
+  width: 130px;
+  background-color: rgb(0, 52, 121);
+  color: white;
+  font-size: 16px;
+  transform: translateY(-90px) translateX(120px);
+  border-radius: 25px; 
+}
+
+.aspcabutton:hover {
+  background-color: rgb(0, 0, 89);
+}
+
+#consider {
+  position: absolute;
+  top: 45%;
+  width: 415px;
+  line-height: 1.3; 
+  text-align: center;
+}
+
+.aspcacontainer {
+  position: absolute;
+  top: 278%;
+  height: 410px;
+  width: 400px;
+  right: 11%;
+}
+.background-container1 {
+  position: absolute;
+  top: 0%;
   width: 50%;
-  height: 320%;
+  height: 180%;
   left: 0;
-  background-color: rgb(175, 173, 173);
-  opacity: 0.7;
+  background-color: white;
   z-index: -1;
 }
+.background-container2 {
+  position: absolute;
+  top: 161%; 
+  width: 50%;
+  height: 180%;
+  left: 0;
+  background-color:white;
+  z-index: -10;
+}
 
-@media (max-width: 768px) {
+@media (max-width: 780px) {
   .text-container {
     width: 100%;
   }
 }
 
-.footerlinks {
-  text-decoration: none;
-  color: whitesmoke;
-  margin-right: 55px;
+.modal {
+  z-index: 20000;
+  margin-top: 50px;
 }
 
 .searchcontainer{

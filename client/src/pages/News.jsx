@@ -1,9 +1,9 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { FaSquareXTwitter } from "react-icons/fa6";
-import { FaFacebook } from "react-icons/fa";
-import { ImInstagram } from "react-icons/im";
+// import { FaSquareXTwitter } from "react-icons/fa6";
+// import { FaFacebook } from "react-icons/fa";
+// import { ImInstagram } from "react-icons/im";
 
 function News() {
     return (
