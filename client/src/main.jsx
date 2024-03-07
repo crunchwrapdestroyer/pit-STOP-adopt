@@ -3,33 +3,38 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App.jsx';
 import Home from './pages/Home';
+
 import PitSearch from './pages/SearchResults.jsx';
-import Adopt from './pages/Adopt.jsx'
-import Contact from './pages/Contact.jsx';
+import Adopt from './pages/Adopt.jsx';
+import News from './pages/News.jsx';
+
+
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <App />, 
     children: [
       {
         index: true,
         element: <Home />
-      },
-      {
-        path: '/SearchResults',
+      }, {
+        path: 'search',
         element: <PitSearch />
       }, {
-        path: '/Adopt',
+        path: 'searchResults',
+        element: <PitSearch />
+      }, {
+        path: 'adopt',
         element: <Adopt />
-      },
-      {
-        path: '/Contact',
-        element: <Contact />
-      },
-    ],
-  },
-]);
+      }, {
+        path: 'news',
+        element: <News />
+      }
+    ]
+  }
+])
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
