@@ -14,7 +14,7 @@ export default function Home() {
                 </Container>
               <img src='./src/assets/hero2.jpg' alt='Hero2' id='hero2' />
               <Container className='background-container2'>
-                <Container id=''></Container>
+                <Container></Container>
                     <h1>About this page</h1>
               </Container>
             </Col>
