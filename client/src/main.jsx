@@ -8,6 +8,8 @@ import PitSearch from './pages/SearchResults.jsx';
 import Adopt from './pages/Adopt.jsx';
 import News from './pages/News.jsx';
 import Donate from './pages/Donate.jsx';
+import Success from './pages/success.jsx';
+import Cancel from './pages/cancel.jsx'
 
 
 
@@ -34,6 +36,13 @@ const router = createBrowserRouter([
       }, {
         path: 'donate',
         element: <Donate />
+      }, 
+      {
+        path: 'success',
+        element: <Success />
+      }, {
+        path: 'cancel',
+        element: <Cancel />
       }
 
     ]

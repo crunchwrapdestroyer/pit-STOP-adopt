@@ -118,6 +118,30 @@ body {
   width: 500px;
 }
 
+.procontainer {
+  position: relative;
+  margin-top: 101px;
+  
+}
+
+.procontainer .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.procontainer .content h1 {
+  color: white; /* Adjust text color as needed */
+  
+}
+
+.procontainer img {
+  width: 100%;
+  height: auto;
+}
+
 .processcontainer {
   transform: translateY(950px) translatex(63%);
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
