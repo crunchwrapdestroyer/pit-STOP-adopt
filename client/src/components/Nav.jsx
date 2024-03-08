@@ -30,8 +30,8 @@ function Navigation() {
               <Nav.Link className="navlink" href="/news">News and Community</Nav.Link>
               <Nav.Link className="navlink" href="/">News and Community</Nav.Link>
               <Nav.Link className="navlink" href="/Contact">Adopt</Nav.Link>
-              <Nav.Link className="navlink" href="/Donate">Donate</Nav.Link>
-           
+              {/* <Nav.Link className="navlink" href="/Donate">Donate</Nav.Link> */}
+              
 
               {Auth.loggedIn() ? (
                 <>
@@ -39,7 +39,9 @@ function Navigation() {
                     See Your Dogs
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                  <CheckoutButton className="navlink"></CheckoutButton>
                 </>
+                
               ) : (
                 <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
               )}

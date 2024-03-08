@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       }, {
         path: 'donate',
         element: <Donate />
-      },
+      }
 
     ]
   }
