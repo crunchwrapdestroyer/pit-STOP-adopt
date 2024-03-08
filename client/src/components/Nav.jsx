@@ -9,6 +9,7 @@ import LoginForm from './LoginForm';
 import { from } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import CheckoutButton from './CheckoutButton';
 
 import Auth from '../utils/auth';
 
@@ -27,6 +28,11 @@ function Navigation() {
             <Nav className="me-auto">
               <Nav.Link className="navlink" href="/search">Search Dogs</Nav.Link>
               <Nav.Link className="navlink" href="/news">News and Community</Nav.Link>
+              <Nav.Link className="navlink" href="/">News and Community</Nav.Link>
+              <Nav.Link className="navlink" href="/Contact">Adopt</Nav.Link>
+              <Nav.Link className="navlink" href="/Donate">Donate</Nav.Link>
+           
+
               {Auth.loggedIn() ? (
                 <>
                   <Nav.Link as={Link} to='/saved'>

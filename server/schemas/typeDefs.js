@@ -34,13 +34,34 @@ const typeDefs = `#graphql
     }
 
     type Donate {
+        _id: ID
+        description: String
         name: String!
         email: String!
-        price: Float!
+        amount: Float!
+        quantity: Int
+        category: User
     }
+
+#     type Checkout {
+#     session: ID
+#   }
+
+# #   input DonateInput {
+# #     _id: ID
+# #     purchaseQuantity: Int
+# #     name: String
+# #     price: Float
+# #     quantity: Int
+#   }
 
     type Query {
         me: User
+        createCheckoutSession: String # '( url: "STRIPEURL.com")'
+        # categories: [User]
+        # order(_id: ID!): User
+        # user: User
+        # checkout(products: [DonateInput]): Checkout
     }
 
     type Mutation {
@@ -49,7 +70,7 @@ const typeDefs = `#graphql
         adoptDog(dogInput: DogInput): User
         saveDog(dogInput: DogInput): User
         removeDog(id: ID!): User
-        donate(name: String!, email: String, price: Float!): Auth
+        # donate(name: String!, email: String!, amount: Float!,id: ID, quantity: Int!): User
     }
 `
 
