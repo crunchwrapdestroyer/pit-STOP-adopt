@@ -46,24 +46,24 @@ const resolvers = {
       }
       throw AuthenticationError
     },
-    saveDog: async (parent, { dogInput }, context) => {
+    saveDog: async (parent, {newDog}, context) => {
 
       if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
+        const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedDogs: dogInput } },
-          { new: true, runValidators: true }
+          { $push: {savedDogs: newDog}},
+          { new: true }
         );
-        return dogInput
+        return updatedUser
       }
       throw AuthenticationError
     },
-    removeDog: async (parent, { id }, context) => {
+    removeDog: async (parent, { dogId }, context) => {
 
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { adopted: { _id: id } } },
+          { $pull: { savedDogs: {dogId} } },
           { new: true }
         );
         return updatedUser

@@ -24,3 +24,18 @@ mutation addUser($username: String!, $email: String!, $password: String!) {
   }
 }
 `
+
+export const SAVE_DOG = gql `
+mutation Mutation($newDog: DogInput!) {
+  saveDog(newDog: $newDog) {
+    savedDogs {
+      name
+      age
+      image
+      location
+      link
+    }
+  }
+}
+`
+

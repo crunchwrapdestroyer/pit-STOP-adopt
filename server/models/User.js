@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const dogSchema = require('./Dog')
 
 const userSchema = new Schema(
     {
@@ -30,18 +31,14 @@ const userSchema = new Schema(
                 family: String,
             }
         ],
-        savedDogs: [
-            {
-                name: String,
-                description: String,
-                image: String,
-                type: String,
-                weight: String,
-                height: String,
-                family: String,
-            }
-        ]
-    }
+        savedDogs: [dogSchema],
+    },
+    {
+        toJSON: {
+          virtuals: true,
+        },
+      }
+
 );
 
 userSchema.pre('save', async function (next) {
