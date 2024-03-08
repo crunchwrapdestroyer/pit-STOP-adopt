@@ -51,6 +51,10 @@
 
 #home-container {
   background-color: white;
+  display: flex;
+  margin-top: 4px;
+  /* width: 100%; */
+  max-width: 100%;
 }
 
 body {
@@ -204,13 +208,6 @@ body {
   margin-top: 50px;
 }
 
-.searchcontainer{
-  position: static;
-  transform: translateX(20%) translateY(10%);
-  width: 20%;
-  height: 1000px;
-  border-right: 2px solid #949494;
-}
 
 .inquirycontainer {
   position: absolute;
@@ -239,32 +236,54 @@ body {
   z-index: 99;
 }
 
+.searchcontainer{
+  /* position: static;
+  transform: translateX(20%) translateY(10%); */
+  width: 20%;
+  /* height: 1000px; */
+  padding-right: 10px;
+  border-right: 2px solid #949494;
+  margin-bottom: 91px;
+}
+
 .resultscontainer {
-  background-color: white;
-  height: 900px;
-  width: 900px;
-  transform: translate(50%, -90%)
+  /* background-color: white; */
+  /* height: 900px; */
+  /* width: 900px; */
+  /* transform: translate(50%, -90%) */
+  padding-bottom: 80px;
 }
 
 .card {
-  margin: 50px;
-  padding: 20px;
+  /* margin: 50px; */
+  /* padding: 20px; */
   border: 3px solid silver;
   background-color:whitesmoke;
-  height: 315px;
+  /* height: 315px; */
   text-align: center;
+  width: 32% !important;
   ;
 }
 
-#cardpic {
-  height: 130px;
+.cardpic {
+  /* height: 130px; */
+  max-height: 300px;
 }
+
 .resultscontainer .row {
-  position: absolute;
+  /* position: absolute; */
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0;
+  padding: 10px;
 }
 
 .searchpage {
-  height: 1300px;
+  /* height: 1300px; */
+  margin-top: 8%;
+  display: flex;
+  padding: 5px 15px;
+  gap: 10px;
 }
 
 .button {

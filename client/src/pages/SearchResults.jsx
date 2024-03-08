@@ -24,7 +24,7 @@ const PitSearch = () => {
 
           <Card className='card' style={{ width: '12rem' }} key={data.id}>
             <Card.Body>                   
-            <Card.Img id='cardpic' src={data.photos[0] ? data.photos[0].small : '#'} alt= 'image' />
+            <Card.Img className='cardpic' src={data.photos[0] ? data.photos[0].medium : '#'} alt= 'image' />
               <Card.Title>{data.name}</Card.Title>
               <Card.Text>
                 <p>Age Group: {data.age}</p>

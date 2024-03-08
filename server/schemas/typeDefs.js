@@ -31,16 +31,27 @@ const typeDefs = `#graphql
     }
 
     type Donate {
+        _id: ID
+        description: String
         name: String!
         email: String!
-        price: Float!
+        amount: Float!
+        quantity: Int
+        category: User
     }
+
+
 
     type Query {
         me: User
+        createCheckoutSession: String # '( url: "STRIPEURL.com")'
+        # categories: [User]
+        # order(_id: ID!): User
+        # user: User
+        # checkout(products: [DonateInput]): Checkout
     }
 
-    type Mutation {
+       type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         adoptDog(dogInput: DogInput): User
