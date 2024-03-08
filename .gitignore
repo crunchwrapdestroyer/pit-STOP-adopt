@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# Stripe secreat key- sk_test_51OrCNcAbCSGhtMT22UeFJovoyXwGceiab6o95R0yJQ6AJHCBb2Bdt96kc3HAIxKJHGbM5TyBEeVtGlJMaUz94NSy00fZiiX2ZR
+
+# Stipe public key -- pk_test_51OrCNcAbCSGhtMT2RtFn9hNf0MMBlsbWvy3y1byqj2MP8Ix12MKbuexXscDpdpclw6O2NbXZwbRPi0zIpENJdqyv001798H0Nb
+
+# price_1OrCZeAbCSGhtMT2v36rIHt4
+
+# https://www.youtube.com/watch?v=ZGZXnTtxTzc
