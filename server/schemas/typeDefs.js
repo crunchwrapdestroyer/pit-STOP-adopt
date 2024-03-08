@@ -4,28 +4,25 @@ const typeDefs = `#graphql
         username: String!
         email: String!
         adopted: [Dog]
-        saveDog: [Dog]
+        savedDogs: [Dog]!
     }
 
     type Dog {
-      _id: ID!
+      dogId: ID
       name: String!
-      description: String!
+      age: String!
       image: String!
-      type: String!
-      weight: String
-      height: String
-      family: String
+      location: String!
+      link: String!
     }
 
-    input DogInput{
+    input DogInput {
+      dogId: String
       name: String!
-      description: String!
+      age: String!
       image: String!
-      type: String!
-      weight: String
-      height: String
-      family: String
+      location: String!
+      link: String!
     }
 
     type Auth {
@@ -54,13 +51,13 @@ const typeDefs = `#graphql
         # checkout(products: [DonateInput]): Checkout
     }
 
-    type Mutation {
+       type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         adoptDog(dogInput: DogInput): User
-        saveDog(dogInput: DogInput): User
-        removeDog(id: ID!): User
-        # donate(name: String!, email: String!, amount: Float!,id: ID, quantity: Int!): User
+        saveDog(newDog: DogInput!): User
+        removeDog(dogID: ID!): User
+        donate(name: String!, email: String, price: Float!): Auth
     }
 `
 
