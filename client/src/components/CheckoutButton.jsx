@@ -26,13 +26,7 @@ function CheckoutButton() {
         }
     });
 
-    // useEffect(() => {
-    //     if (data) {
-    //       stripePromise.then((res) => {
-    //         res.redirectToCheckout({ sessionId: data.checkout.session });
-    //       });
-    //     }
-    //   }, [data]);
+    
 
     if (loading) return null;
     if (error) return `Error! ${error}`
