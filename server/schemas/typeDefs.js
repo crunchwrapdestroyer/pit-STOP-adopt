@@ -43,17 +43,7 @@ const typeDefs = `#graphql
         category: User
     }
 
-#     type Checkout {
-#     session: ID
-#   }
 
-# #   input DonateInput {
-# #     _id: ID
-# #     purchaseQuantity: Int
-# #     name: String
-# #     price: Float
-# #     quantity: Int
-#   }
 
     type Query {
         me: User
