@@ -1,73 +1,61 @@
-//import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import Auth from '../utils/auth'
+import { saveDogIds, getSavedDogIds } from '../utils/localStorage';
+import { useMutation } from '@apollo/client';
+import { SAVE_DOG } from '../utils/mutations';
 
 
-const PitSearch = () => {
-      const [results, setResults] = useState()
-      const [gender, setGender] = useState('')
-      const [age, setAge] = useState('')
-      const [children, setChildren] = useState('')
-      const [location, setLocation]= useState('')
-      const [distance, setDistance] = useState('')
+const SeachDogs = () => {
+    const [searchedDogs, setSearchedDogs] = useState([])
+    const [gender, setGender] = useState('')
+    const [age, setAge] = useState('')
+    const [children, setChildren] = useState('')
+    const [location, setLocation]= useState('')
+    const [distance, setDistance] = useState('')
 
-      const openInNewTab = (url) => {
+    const [savedDogIds, setSavedDogIds] = useState(getSavedDogIds());
+    const [saveDog, { error }] = useMutation(SAVE_DOG);
+
+    useEffect(() => {
+        return () => saveDogIds(savedDogIds);
+      });
+// Open link in new tab
+    const openInNewTab = (url) => {
         window.open(url, '_blank', 'noreferrer');
-      };
+    }
 
-      function showResults(data) {
-        const pitResults =  data.animals.map((data) => (
-
-          <Card className='card' style={{ width: '12rem' }} key={data.id}>
-            <Card.Body>                   
-            <Card.Img className='cardpic' src={data.photos[0] ? data.photos[0].medium : '#'} alt= 'image' />
-              <Card.Title>{data.name}</Card.Title>
-              <Card.Text>
-                <p>Age Group: {data.age}</p>
-                <p>{data.contact.address.city}, {data.contact.address.state} </p>
-              </Card.Text>
-              <Button variant="primary"  role="link"
-        onClick={() => openInNewTab(`${data.url}`)}>View Info</Button>
-              <p style={{lineHeight: '2px'}}>&nbsp;</p>
-              <Button variant="primary" >Save </Button>
-            </Card.Body>
-          </Card>
-
-
-
-
-                    ))
-        setResults( pitResults )
-      }
-
-  const getToken = async () => {
-      try {
-        const tokenUrl = 'https://api.petfinder.com/v2/oauth2/token';
-        const clientId = 'SBP0qZNplAGq7qoUskfBmlUeq3UpDZDRB5WoboBiEvDcfC3Ns1';
-        const clientSecret = 'fE3NAgsE2F4WyC4hZPBOswObCd62UxQdKqF8ABX0';
-    
-        const response = await axios.post(tokenUrl, {
-          grant_type: 'client_credentials',
-          client_id: clientId,
-          client_secret: clientSecret,
-        });
-        console.log('Access Token:', response.data.access_token);
-        const token = response.data.access_token
-        console.log(token)
-        fetchData(token)
-       
-      } catch (error) {
-        console.log(error);
+// Authenticate API
+const getToken = async () => {
+    try {
+      const tokenUrl = 'https://api.petfinder.com/v2/oauth2/token';
+      const clientId = 'SBP0qZNplAGq7qoUskfBmlUeq3UpDZDRB5WoboBiEvDcfC3Ns1';
+      const clientSecret = 'fE3NAgsE2F4WyC4hZPBOswObCd62UxQdKqF8ABX0';
+  
+      const response = await axios.post(tokenUrl, {
+        grant_type: 'client_credentials',
+        client_id: clientId,
+        client_secret: clientSecret,
+      });
+      console.log('Access Token:', response.data.access_token);
+      const token = response.data.access_token
+      console.log(token)
+      fetchData(token)
      
-      }
-    };
+    } catch (error) {
+      console.log(error);
+   
+    }
+  };
 
+// Fetch data & Handle Results
 
-  const fetchData = async (token) => {
+const fetchData = async (token) => {
     try {
       const apiUrl =`https://api.petfinder.com/v2/animals?type=dog&breed=pit-bull-terrier&status=adoptable&gender=${gender}&age=${age}&good_with_children=${children}&location=${location}&distance=${distance}`
         // TO DO: Update key, secret, move to .env file, move to server side 
@@ -83,17 +71,57 @@ const PitSearch = () => {
       }
   
       const data = await response.json();
+      const dogData = data.animals.map((dog) => ({
+         dogId: String(dog.id),
+         name: dog.name,
+         age: dog.age,
+         location: dog.contact.address.city, 
+         link: dog.url,
+         image: dog.photos[0].medium ? dog.photos[0].medium : '#',
+      }));
+
+      setSearchedDogs(dogData)
+
       console.log(apiUrl)
       console.log(data);
       //console.log(data.animals[0].name)
       showResults(data)
       
-
     }catch (error) {
       console.log(error)
     }
-  }
+  };
+  const handleSaveDog = async (dogId) => {
+    // find the dog in `searchedDogs` state by the matching id
+    const dogToSave = searchedDogs.find((dog) => dog.dogId === dogId);
 
+    // get token
+    const tokens = Auth.loggedIn() ? Auth.getToken() : null;
+    console.log(tokens)
+
+    if (!tokens) {
+      return false;
+    }
+
+    try {
+      const {data} = await saveDog({
+        variables: {newDog: {...dogToSave}}
+      })
+
+      // if dog successfully saves to user's account, save dog id to state
+      setSavedDogIds([...savedDogIds, dogToSave.dogId]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+
+
+
+
+
+
+  // Page 
   return (
     <div className='searchpage'>
       <div className='searchcontainer'> 
@@ -146,11 +174,45 @@ const PitSearch = () => {
       </div>
       <Col className='resultscontainer'>
         <Row>
-          {results}
+            {searchedDogs.map((dog) => {
+                return (
+                    
+            <Card className='card' style={{ width: '12rem' }} key={dog.dogId}>
+            <Card.Body>                   
+            <Card.Img className='cardpic' src={dog.image ? dog.image : '#'} alt= 'image' />
+              <Card.Title>{dog.name}</Card.Title>
+              <Card.Text>
+                Age Group: {dog.age} <br/>
+                {dog.location}
+              </Card.Text>
+              <Button 
+                variant="primary"  role="link"
+                onClick={() => openInNewTab(`${dog.link}`)}>View Info</Button>
+              <p style={{lineHeight: '2px'}}>&nbsp;</p>
+              <Button
+                 disabled={savedDogIds?.some((savedDogId) => savedDogId === dog.dogId)}
+                 onClick={() => handleSaveDog(dog.dogId)}>
+                        {savedDogIds?.some((savedDogId) => savedDogId === dog.dogId)
+                          ? 'This dog has already been added to favorites!'
+                          : 'Add to favorites'}
+                      </Button>
+            </Card.Body>
+            </Card>
+            );
+            })}
+
+
+         
         </Row>
       </Col>
     </div>
   );
-}
-  
-  export default PitSearch;
+
+
+
+
+
+
+}; 
+
+export default SeachDogs
