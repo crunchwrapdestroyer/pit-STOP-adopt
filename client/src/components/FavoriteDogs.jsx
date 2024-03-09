@@ -1,46 +1,46 @@
 import { Row, Col } from 'react-bootstrap';
-//import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-//import Form from 'react-bootstrap/Form';
+
 //import { useState, useEffect } from 'react';
 
 import Auth from '../utils/auth'
 
 import { useQuery, useMutation } from '@apollo/client';
 
-//import { SAVE_DOG } from '../utils/mutations';
+import { REMOVE_DOG } from '../utils/mutations';
 import {GET_ME} from '../utils/queries'
 
 
 const SavedDogs = () => {
     const {loading, data} = useQuery(GET_ME)
-    //const [removeDog, {error}] = useMutation(REMOVE_DOG)
+    const [removeDog, {error}] = useMutation(REMOVE_DOG)
     const userData = data?.me || {};
     console.log(data)
     console.log(userData)
    
-    // const handleDeleteDog = async (dogId) => {
-    //     const token = Auth.loggedIn() ? Auth.getToken() : null;
+    const handleDeleteDog = async (dogId) => {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
     
-    //     if (!token) {
-    //       return false;
-    //     }
+        if (!token) {
+          return false;
+        }
     
-    //     try {
-    //       const {data} = await removeDog({variables: {dogId}});
+        try {
+          const {data} = await removeDog({variables: {dogId}});
     
-    //       if (error) {
-    //         console(error);
-    //       }
+          if (error) {
+            console(error);
+          }
     
-    //       // upon success, remove book's id from localStorage
-    //       removeDogId(dogId);
-    //     } catch (err) {
-    //       console.error(err);
-    //     }
-    //   };
+          // upon success, remove book's id from localStorage
+          removeDogId(dogId);
+        } catch (err) {
+          console.error(err);
+        }
+      };
     
-      // if data isn't here yet, say so
+    //  if data isn't here yet, say so
       if (loading) {
         return <h2>LOADING...</h2>;
       };
@@ -63,7 +63,9 @@ const SavedDogs = () => {
                 Age Group: {dog.age} <br/>
                 {dog.location}
               </Card.Text>
-              
+              <Button className='btn-block btn-danger' onClick={() => handleDeleteDog(dog.dogId)}>
+                      Remove from favorites
+                    </Button>
             </Card.Body>
             </Card>
             );
