@@ -56,7 +56,7 @@ const typeDefs = `#graphql
         addUser(username: String!, email: String!, password: String!): Auth
         adoptDog(dogInput: DogInput): User
         saveDog(newDog: DogInput!): User
-        removeDog(dogID: ID!): User
+        removeDog(dogId: ID!): User
         donate(name: String!, email: String, price: Float!): Auth
     }
 `

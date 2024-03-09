@@ -39,3 +39,21 @@ mutation Mutation($newDog: DogInput!) {
 }
 `
 
+export const REMOVE_DOG = gql `
+mutation Mutation($dogId: ID!) {
+  removeDog(dogId: $dogId) {
+    _id
+    username
+    email
+    savedDogs {
+      dogId
+      name
+      age
+      image
+      location
+      link
+    }
+  }
+}
+`
+
