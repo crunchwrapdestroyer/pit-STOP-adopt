@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Image from 'react-bootstrap/Image';
-import { Modal, Tab } from 'react-bootstrap';
+import { Modal, NavDropdown, Tab } from 'react-bootstrap';
 import { useState } from 'react';
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
@@ -19,28 +19,18 @@ function Navigation() {
   return (
     <>
       <Navbar expand="lg" className="navbar">
-        <Container className="brand-container">
-        <Navbar.Brand id='brand' href='/'><Image src="../src/assets/pit.png" alt="Pitbull Icon" id='pitbull'/>Pit STOP Adopt</Navbar.Brand>
-        </Container>
-        <Container className="nav-container">
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link className="navlink" href="/search">Search Dogs</Nav.Link>
-              <Nav.Link className="navlink" href="/news">News and Community</Nav.Link>
-              {Auth.loggedIn() ? (
-                <>
-                  <Nav.Link as={Link} to='/saved'>
-                    See Your Dogs
-                  </Nav.Link>
-                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
-                </>
-              ) : (
-                <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+        <Navbar.Brand id='brand' href="/">Pit STOP Adopt</Navbar.Brand>
+        <Navbar.Toggle className="navtoggle" aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <NavDropdown.Item className="navlink" href="/search">Search Dogs</NavDropdown.Item>
+            <NavDropdown.Item className="navlink" href="/news">News and Community</NavDropdown.Item>
+            <NavDropdown.Item className="navlink" href="/saved" >See Your Dogs</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => setShowModal(true)} className="navlink" >Login/Sign Up</NavDropdown.Item>
+          </Nav>
+        </Navbar.Collapse>
+    </Navbar>
+
       <Modal
         size='sm'
         show={showModal}
