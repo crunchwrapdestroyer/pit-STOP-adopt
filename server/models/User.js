@@ -54,6 +54,10 @@ userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
 
+userSchema.virtual('dogCount').get(function () {
+    return this.savedDogs.length;
+  });
+
 
 const User = model('User', userSchema);
 

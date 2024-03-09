@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { useState, useEffect } from 'react';
+import SavedDogs from '../components/FavoriteDogs';
+
 
 import Auth from '../utils/auth'
 import { saveDogIds, getSavedDogIds } from '../utils/localStorage';
@@ -100,6 +102,7 @@ const fetchData = async (token) => {
     console.log(tokens)
 
     if (!tokens) {
+      alert('Please sign in and try agian')
       return false;
     }
 
@@ -193,7 +196,7 @@ const fetchData = async (token) => {
                  disabled={savedDogIds?.some((savedDogId) => savedDogId === dog.dogId)}
                  onClick={() => handleSaveDog(dog.dogId)}>
                         {savedDogIds?.some((savedDogId) => savedDogId === dog.dogId)
-                          ? 'This dog has already been added to favorites!'
+                          ? 'Saved in favorites'
                           : 'Add to favorites'}
                       </Button>
             </Card.Body>
@@ -202,9 +205,14 @@ const fetchData = async (token) => {
             })}
 
 
+
+          <SavedDogs/>
          
         </Row>
       </Col>
+
+      
+            
     </div>
   );
 
