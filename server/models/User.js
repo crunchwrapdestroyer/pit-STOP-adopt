@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const dogSchema = require('./Dog')
 
 const userSchema = new Schema(
     {
@@ -30,18 +31,14 @@ const userSchema = new Schema(
                 family: String,
             }
         ],
-        savedDogs: [
-            {
-                name: String,
-                description: String,
-                image: String,
-                type: String,
-                weight: String,
-                height: String,
-                family: String,
-            }
-        ]
-    }
+        savedDogs: [dogSchema],
+    },
+    {
+        toJSON: {
+          virtuals: true,
+        },
+      }
+
 );
 
 userSchema.pre('save', async function (next) {
@@ -56,6 +53,10 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual('dogCount').get(function () {
+    return this.savedDogs.length;
+  });
 
 
 const User = model('User', userSchema);

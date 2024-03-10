@@ -9,6 +9,7 @@ import LoginForm from './LoginForm';
 import { from } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import CheckoutButton from './CheckoutButton';
 
 import Auth from '../utils/auth';
 
