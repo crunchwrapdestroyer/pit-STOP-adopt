@@ -28,7 +28,7 @@ function Navigation() {
             <Nav className="me-auto">
               <Nav.Link className="navlink" href="/search">Search Dogs</Nav.Link>
               <Nav.Link className="navlink" href="/news">News and Community</Nav.Link>
-              <Nav.Link className="navlink" href="/">News and Community</Nav.Link>
+              {/* <Nav.Link className="navlink" href="/">News and Community</Nav.Link> */}
               <Nav.Link className="navlink" href="/Contact">Adopt</Nav.Link>
               {/* <Nav.Link className="navlink" href="/Donate">Donate</Nav.Link> */}
               
