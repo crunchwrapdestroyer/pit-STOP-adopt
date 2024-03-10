@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import CarouselFadeExample from '../components/Carousel'
 
 export default function Home() {
     return (
@@ -9,6 +9,7 @@ export default function Home() {
             <Col>
               <img src='./src/assets/hero1.jpg' alt='Hero1' id='hero1' />
               <Container className='background-container1'>
+              <CarouselFadeExample />
                 <Container id='welcomecontainer'>
                   <p id='welcomemessage'>&emsp;Welcome to Pit STOP Adopt, where you can find your new furry best friend and make a meaningful difference in the life of a pit bull! Adopting a pit bull comes with a plethora of benefits beyond just gaining a loving companion. These resilient and affectionate dogs are known for their loyalty, intelligence, and boundless energy. By opening your heart and home to a pit bull, you're not only providing a second chance to a deserving animal but also promoting compassion and responsible pet ownership within your community.<br/><br/>&emsp;Furthermore, adopting a pit bull can be a rewarding experience on a personal level. These dogs often form strong bonds with their owners, offering unwavering loyalty and endless affection. With proper training and socialization, pit bulls can excel as family pets, therapy animals, and even service dogs. By choosing adoption, you're not only enriching your own life but also helping to dispel myths and stereotypes surrounding pit bulls, showcasing their true nature as loving and devoted companions. Join us in our mission to find loving homes for pit bulls in need and experience the joy that comes with rescuing a remarkable canine friend.</p>
                 </Container>              
