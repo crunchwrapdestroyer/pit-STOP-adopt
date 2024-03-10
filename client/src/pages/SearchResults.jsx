@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { useState, useEffect } from 'react';
+import SavedDogs from '../components/FavoriteDogs';
+
 
 import Auth from '../utils/auth'
 import { saveDogIds, getSavedDogIds } from '../utils/localStorage';
@@ -107,6 +109,7 @@ const SearchDogs = () => {
     console.log(tokens)
 
     if (!tokens) {
+      alert('Please sign in and try agian')
       return false;
     }
 
@@ -188,33 +191,35 @@ const SearchDogs = () => {
       </div>
       <Col className='resultscontainer'>
         <Row>
-          {searchedDogs.map((dog) => {
-            return (
 
-              <Card className='card' style={{ width: '12rem' }} key={dog.dogId}>
-                <Card.Body>
-                  <Card.Img className='cardpic' src={dog.image ? dog.image : '#'} alt='image' />
-                  <Card.Title>{dog.name}</Card.Title>
-                  <Card.Text>
-                    Age Group: {dog.age} <br />
-                    {dog.location}
-                  </Card.Text>
-                  <Button
-                    variant="primary" role="link"
-                    onClick={() => openInNewTab(`${dog.link}`)}>View Info</Button>
-                  <p style={{ lineHeight: '2px' }}>&nbsp;</p>
-                  <Button
-                    disabled={savedDogIds?.some((savedDogId) => savedDogId === dog.dogId)}
-                    onClick={() => handleSaveDog(dog.dogId)}>
-                    {savedDogIds?.some((savedDogId) => savedDogId === dog.dogId)
-                      ? 'This dog has already been added to favorites!'
-                      : 'Add to favorites'}
-                  </Button>
-                </Card.Body>
-              </Card>
-
+             {searchedDogs.map((dog) => {
+                return (
+                    
+            <Card className='card' style={{ width: '12rem' }} key={dog.dogId}>
+            <Card.Body>                   
+            <Card.Img className='cardpic' src={dog.image ? dog.image : '#'} alt= 'image' />
+              <Card.Title>{dog.name}</Card.Title>
+              <Card.Text>
+                Age Group: {dog.age} <br/>
+                {dog.location}
+              </Card.Text>
+              <Button 
+                variant="primary"  role="link"
+                onClick={() => openInNewTab(`${dog.link}`)}>View Info</Button>
+              <p style={{lineHeight: '2px'}}>&nbsp;</p>
+              <Button
+                 disabled={savedDogIds?.some((savedDogId) => savedDogId === dog.dogId)}
+                 onClick={() => handleSaveDog(dog.dogId)}>
+                        {savedDogIds?.some((savedDogId) => savedDogId === dog.dogId)
+                          ? 'Saved in favorites'
+                          : 'Add to favorites'}
+                      </Button>
+            </Card.Body>
+            </Card>
             );
-          })}
+            })}
+
+          <SavedDogs/>
 
           {pagination && (
             <div className='pagination'>
@@ -223,11 +228,11 @@ const SearchDogs = () => {
               {pagination._links.next && <button onClick={handleNextPage}>Next</button>}
             </div>
           )}
+
         </Row>
-      </Col>
+      </Col>       
     </div>
   );
-
 };
 
 export default SearchDogs

@@ -6,6 +6,14 @@ query Me {
       _id
       email
       username
+      savedDogs{
+        dogId
+        name
+        age
+        location 
+        link
+        image
+      }
     }
   }
 `

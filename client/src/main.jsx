@@ -25,9 +25,6 @@ const router = createBrowserRouter([
         path: 'search',
         element: <PitSearch />
       }, {
-        path: 'searchResults',
-        element: <PitSearch />
-      }, {
         path: 'adopt',
         element: <Adopt />
       }, {
