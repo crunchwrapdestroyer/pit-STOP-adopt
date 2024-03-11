@@ -65,7 +65,7 @@ const SearchDogs = () => {
 
   const fetchData = async (token, page) => {
     try {
-      const apiUrl = `https://api.petfinder.com/v2/animals?type=dog&breed=pit-bull-terrier&status=adoptable&gender=${gender}&age=${age}&good_with_children=${children}&location=${location}&distance=${distance}&limit=10&page=${page}`
+      const apiUrl = `https://api.petfinder.com/v2/animals?type=dog&breed=pit-bull-terrier&status=adoptable&gender=${gender}&age=${age}&good_with_children=${children}&location=${location}&distance=${distance}&limit=6&page=${page}`
       // TO DO: Update key, secret, move to .env file, move to server side 
       const response = await fetch(apiUrl, {
         method: 'GET',
