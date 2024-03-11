@@ -112,10 +112,10 @@ body {
 .footerlinks {
   text-decoration: none;
   color: whitesmoke;
-  margin-right: 9vw;
+  margin-right: 2vw;
   padding-right: 7%;
   width: 20%;
-  transform: translateX(15vw) translateY(-2vh);
+  transform: translateX(15vw) translateY(-2.5vh);
 }
 
 .brand-container {
