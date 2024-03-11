@@ -221,11 +221,11 @@ const SearchDogs = () => {
 
           {pagination && (
             <div className='pagination'>
-              {pagination._links.previous && <button onClick={handlePreviousPage}>Previous</button>}
+              {pagination?._links?.previous && <button onClick={handlePreviousPage}>Previous</button>}
               &nbsp;
               <span>{pagination.current_page}</span>
               &nbsp;
-              {pagination._links.next && <button onClick={handleNextPage}>Next</button>}
+              {pagination?._links?.next && <button onClick={handleNextPage}>Next</button>}
             </div>
           )}
         </Row>

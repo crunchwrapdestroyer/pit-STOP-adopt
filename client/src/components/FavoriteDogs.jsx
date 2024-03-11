@@ -48,9 +48,9 @@ const SavedDogs = () => {
 
       return(
 
-        <Col className='resultscontainer'>
+        <div className='resultscontainer favorites'>
         <Row>
-        <h2 className='pt-5'>
+        <h2>
           Favorite Dogs
         </h2>
          {userData.savedDogs.map((dog) => {
@@ -72,7 +72,7 @@ const SavedDogs = () => {
           })} 
 
         </Row>
-        </Col> 
+        </div> 
 
       )
 }
