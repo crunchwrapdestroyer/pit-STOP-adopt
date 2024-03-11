@@ -27,6 +27,7 @@ const SearchDogs = () => {
 
   const [savedDogIds, setSavedDogIds] = useState(getSavedDogIds());
   const [saveDog, { error }] = useMutation(SAVE_DOG);
+  
 
   useEffect(() => {
     return () => saveDogIds(savedDogIds);
@@ -40,8 +41,8 @@ const SearchDogs = () => {
   const getToken = async () => {
     try {
       const tokenUrl = 'https://api.petfinder.com/v2/oauth2/token';
-      const clientId = 'SBP0qZNplAGq7qoUskfBmlUeq3UpDZDRB5WoboBiEvDcfC3Ns1';
-      const clientSecret = 'fE3NAgsE2F4WyC4hZPBOswObCd62UxQdKqF8ABX0';
+      const clientId = import.meta.env.VITE_PETFINDER_CLIENT_ID;
+      const clientSecret = import.meta.env.VITE_PETFINDER_SECRET_KEY;
 
       const response = await axios.post(tokenUrl, {
         grant_type: 'client_credentials',
