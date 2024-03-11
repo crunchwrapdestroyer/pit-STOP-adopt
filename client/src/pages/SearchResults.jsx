@@ -121,6 +121,8 @@ const SearchDogs = () => {
 
       // if dog successfully saves to user's account, save dog id to state
       setSavedDogIds([...savedDogIds, dogToSave.dogId]);
+      window.location.reload()
+  
     } catch (err) {
       console.error(err);
     }
@@ -231,7 +233,7 @@ const SearchDogs = () => {
           )}
         </Row>
       </Col>  
-         {Auth.loggedIn() ? <SavedDogs/> : null}  
+         {Auth.loggedIn()? <SavedDogs/> : null}  
     </div>
   );
 };
