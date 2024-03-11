@@ -26,7 +26,6 @@ function Navigation() {
           <Nav className="me-auto">
             <NavDropdown.Item className="navlink" href="/search">Search Dogs</NavDropdown.Item>
             <NavDropdown.Item className="navlink" href="/news">News and Community</NavDropdown.Item>
-            <NavDropdown.Item className="navlink" href="/saved" >See Your Dogs</NavDropdown.Item>
             <NavDropdown.Item onClick={() => setShowModal(true)} className="navlink" >Login/Sign Up</NavDropdown.Item>
           </Nav>
         </Navbar.Collapse>
