@@ -219,18 +219,19 @@ const SearchDogs = () => {
             );
             })}
 
-          <SavedDogs/>
-
           {pagination && (
             <div className='pagination'>
               {pagination._links.previous && <button onClick={handlePreviousPage}>Previous</button>}
+              &nbsp;
               <span>{pagination.current_page}</span>
+              &nbsp;
               {pagination._links.next && <button onClick={handleNextPage}>Next</button>}
             </div>
           )}
-
+          {Auth.loggedIn() ? <SavedDogs/> : null}  
         </Row>
-      </Col>       
+      </Col>  
+         
     </div>
   );
 };
