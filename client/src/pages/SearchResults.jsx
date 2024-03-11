@@ -228,10 +228,9 @@ const SearchDogs = () => {
               {pagination._links.next && <button onClick={handleNextPage}>Next</button>}
             </div>
           )}
-          {Auth.loggedIn() ? <SavedDogs/> : null}  
         </Row>
       </Col>  
-         
+         {Auth.loggedIn() ? <SavedDogs/> : null}  
     </div>
   );
 };
