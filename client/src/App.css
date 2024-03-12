@@ -126,8 +126,8 @@ body {
   margin-right: 2vw;
   padding-right: 7%;
   width: 25vw;
-  transform: translateX(12vw) translateY(-1.3vw);
-  font-size: 100%;
+  transform: translateX(12vw) translateY(-.5vw);
+  font-size: 1.5vw;
 }
 
 .brand-container {
@@ -226,7 +226,7 @@ body {
   padding-left: 2%;
   padding-right: 2%;
   border-radius: 25px; 
-  font-size: 130%;
+  font-size: 1.4vw;
   border-radius: 25px;
 
 }
