@@ -121,12 +121,13 @@ body {
 }
 
 .footerlinks {
+  position: relative;
   text-decoration: none;
   color: whitesmoke;
   margin-right: 2vw;
   padding-right: 7%;
   width: 25vw;
-  transform: translateX(12vw) translateY(-.5vw);
+  transform: translateX(12vw) translateY(-1vw);
   font-size: 1.5vw;
 }
 
