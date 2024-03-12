@@ -27,6 +27,9 @@ As a pit bull dog lover, I want to:
 
 ![image](https://github.com/elsie-d/pit-STOP-adopt/assets/144054873/9722adb6-5578-41e8-b443-28d1431f9c27)
 
+![image](https://github.com/elsie-d/pit-STOP-adopt/assets/144054873/9deb2f21-cfeb-4815-9a20-14bb6ba0273a)
+
+
 ## Features
 - Browse available pit bulls for adoption
 - View detailed profiles of each pit bull, including photos and descriptions
