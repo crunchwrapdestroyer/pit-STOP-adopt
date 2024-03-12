@@ -212,7 +212,7 @@ body {
 .aspcacontainer {
   position: absolute;
   top: 142vw;
-  height: 47vw;
+  height:50vw;
   width: 35vw;
   right: 1vw;
   margin: 10vw;
@@ -270,7 +270,7 @@ body {
 
 .background-container2 {
   position: absolute;
-  height: 86vh;
+  height: 98vh;
   transform: translateY(155vw);
   width: 50vw;
   left: 0;
