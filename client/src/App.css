@@ -87,9 +87,8 @@ body {
 #processsteps {
   position: relative;
   width: 75%;
-  height: 35%;
-  top: 42%;
-  font-size: 3.2vh;
+  top: 12vw;
+  font-size: 2vw;
   line-height: 110%;
   left: 10%;
 }
@@ -175,16 +174,6 @@ body {
 .processcontainer {
   transform: translateY(950px) translatex(63%);
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-#processsteps {
-  position: relative;
-  top: 16%;
-  height: 40%;
-  font-size: 2vw;
-  line-height: 1.5; 
-  font-size: 20px;
-  line-height: 1.5;
 }
 
 #aspca {
