@@ -23,6 +23,7 @@ As a pit bull dog lover, I want to:
 ## Live URL
 
 ## Screen Shots
+![image](https://github.com/elsie-d/pit-STOP-adopt/assets/144054873/83f85917-10c8-4e63-9f1b-02ad498b3f21)
 
 ## Features
 - Browse available pit bulls for adoption
