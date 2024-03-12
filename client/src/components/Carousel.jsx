@@ -1,9 +1,9 @@
 import Carousel from 'react-bootstrap/Carousel';
-import Profile1 from '../assets/profile1.png';
-import Profile2 from '../assets/Profile2.png';
-import Profile3 from '../assets/Profile3.png';
-import Profile4 from '../assets/Profile4.png';
-import Profile5 from '../assets/Profile5.png';
+import profile1 from '../assets/Profile1.png';
+import profile2 from '../assets/Profile2.png';
+import profile3 from '../assets/Profile3.png';
+import profile4 from '../assets/Profile4.png';
+import profile5 from '../assets/Profile5.png';
 
 function CarouselFadeExample() {
   return (
