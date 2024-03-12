@@ -13,7 +13,7 @@ function Cancel() {
             </Row>
             <Row>
                 <Col>
-                    <img id='sad-pit' src='./src/assets/sadpit.jpg' alt='frownpit' className="img-fluid" />
+                    <img id='sad-pit' src='./public/assets/sadpit.jpg' alt='frownpit' className="img-fluid" />
                 </Col>
             </Row>
         </Container>
