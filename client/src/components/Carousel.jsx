@@ -1,31 +1,32 @@
 import Carousel from 'react-bootstrap/Carousel';
-import Child from '../assets/child.jpg';
+import Profile1 from '../assets/profile1.png';
+import Profile2 from '../assets/Profile2.png';
+import Profile3 from '../assets/Profile3.png';
+import Profile4 from '../assets/Profile4.png';
+import Profile5 from '../assets/Profile5.png';
 
 function CarouselFadeExample() {
   return (
     <Carousel fade>
       <Carousel.Item>
-        <img src={Child} text="First slide" />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
+        <img src={Profile1} text="First slide" />
+
       </Carousel.Item>
       <Carousel.Item>
-        <img src={Child} text="Second slide" />
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
+        <img src={Profile2} text="Second slide" />
+
       </Carousel.Item>
       <Carousel.Item>
-        <img src={Child} text="Third slide" />
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
+        <img src={Profile3} text="Third slide" />
+
+      </Carousel.Item>
+      <Carousel.Item>
+        <img src={Profile4} text="Third slide" />
+
+      </Carousel.Item>
+      <Carousel.Item>
+        <img src={Profile5} text="Third slide" />
+
       </Carousel.Item>
     </Carousel>
   );

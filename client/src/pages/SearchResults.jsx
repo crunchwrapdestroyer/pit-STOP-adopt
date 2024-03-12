@@ -168,7 +168,7 @@ const SearchDogs = () => {
             <option value="0">No preference</option>
             <option value="1">Yes please</option>
           </Form.Select>
-          <Form.Label htmlFor="inputPassword5">Search location with zip cole</Form.Label>
+          <Form.Label htmlFor="inputPassword5">Search location with zip code</Form.Label>
           <Form.Control
             type="text"
             id="inputPassword5"
