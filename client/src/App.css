@@ -121,12 +121,13 @@ body {
 }
 
 .footerlinks {
+  position: relative;
   text-decoration: none;
   color: whitesmoke;
   margin-right: 2vw;
   padding-right: 7%;
   width: 25vw;
-  transform: translateX(12vw) translateY(-.5vw);
+  transform: translateX(12vw) translateY(-1vw);
   font-size: 1.5vw;
 }
 
@@ -306,11 +307,6 @@ z-index: 400;
 .modal {
   z-index: 20000;
   margin-top: 50px;
-  top: 15%;
-  text-align: center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 30px;
-  z-index: 99;
 }
 
 .searchcontainer {
