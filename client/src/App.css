@@ -105,7 +105,7 @@ body {
   background-color: black;
   color: white;
   text-align: center;
-  padding: 10px; 
+  padding: 7px; 
   z-index: 5;
 }
 
@@ -115,8 +115,8 @@ body {
   margin-right: 2vw;
   padding-right: 7%;
   width: 25vw;
-  transform: translateX(12vw) translateY(-2.5vh);
-  font-size: 2.5vh;
+  transform: translateX(12vw) translateY(-1.3vw);
+  font-size: 100%;
 }
 
 .brand-container {
