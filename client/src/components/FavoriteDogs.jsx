@@ -2,7 +2,7 @@ import { Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-//import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import Auth from '../utils/auth'
 
@@ -18,7 +18,7 @@ const SavedDogs = () => {
     const userData = data?.me || {};
     console.log(data)
     console.log(userData)
-   
+
     const handleDeleteDog = async (dogId) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
     
@@ -39,6 +39,7 @@ const SavedDogs = () => {
           console.error(err);
         }
       };
+
     
     //  if data isn't here yet, say so
       if (loading) {
@@ -48,9 +49,9 @@ const SavedDogs = () => {
 
       return(
 
-        <Col className='resultscontainer'>
+        <div className='resultscontainer favorites'>
         <Row>
-        <h2 className='pt-5'>
+        <h2>
           Favorite Dogs
         </h2>
          {userData.savedDogs.map((dog) => {
@@ -72,7 +73,7 @@ const SavedDogs = () => {
           })} 
 
         </Row>
-        </Col> 
+        </div> 
 
       )
 }

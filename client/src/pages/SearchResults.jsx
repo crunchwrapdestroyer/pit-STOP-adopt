@@ -27,6 +27,7 @@ const SearchDogs = () => {
 
   const [savedDogIds, setSavedDogIds] = useState(getSavedDogIds());
   const [saveDog, { error }] = useMutation(SAVE_DOG);
+  
 
   useEffect(() => {
     return () => saveDogIds(savedDogIds);
@@ -40,8 +41,8 @@ const SearchDogs = () => {
   const getToken = async () => {
     try {
       const tokenUrl = 'https://api.petfinder.com/v2/oauth2/token';
-      const clientId = 'SBP0qZNplAGq7qoUskfBmlUeq3UpDZDRB5WoboBiEvDcfC3Ns1';
-      const clientSecret = 'fE3NAgsE2F4WyC4hZPBOswObCd62UxQdKqF8ABX0';
+      const clientId = import.meta.env.VITE_PETFINDER_CLIENT_ID;
+      const clientSecret = import.meta.env.VITE_PETFINDER_SECRET_KEY;
 
       const response = await axios.post(tokenUrl, {
         grant_type: 'client_credentials',
@@ -65,7 +66,7 @@ const SearchDogs = () => {
 
   const fetchData = async (token, page) => {
     try {
-      const apiUrl = `https://api.petfinder.com/v2/animals?type=dog&breed=pit-bull-terrier&status=adoptable&gender=${gender}&age=${age}&good_with_children=${children}&location=${location}&distance=${distance}&limit=10&page=${page}`
+      const apiUrl = `https://api.petfinder.com/v2/animals?type=dog&breed=pit-bull-terrier&status=adoptable&gender=${gender}&age=${age}&good_with_children=${children}&location=${location}&distance=${distance}&limit=6&page=${page}`
       // TO DO: Update key, secret, move to .env file, move to server side 
       const response = await fetch(apiUrl, {
         method: 'GET',
@@ -120,6 +121,8 @@ const SearchDogs = () => {
 
       // if dog successfully saves to user's account, save dog id to state
       setSavedDogIds([...savedDogIds, dogToSave.dogId]);
+      window.location.reload()
+  
     } catch (err) {
       console.error(err);
     }
@@ -219,18 +222,18 @@ const SearchDogs = () => {
             );
             })}
 
-          <SavedDogs/>
-
           {pagination && (
             <div className='pagination'>
-              {pagination._links.previous && <button onClick={handlePreviousPage}>Previous</button>}
+              {pagination?._links?.previous && <button onClick={handlePreviousPage}>Previous</button>}
+              &nbsp;
               <span>{pagination.current_page}</span>
-              {pagination._links.next && <button onClick={handleNextPage}>Next</button>}
+              &nbsp;
+              {pagination?._links?.next && <button onClick={handleNextPage}>Next</button>}
             </div>
           )}
-
         </Row>
-      </Col>       
+      </Col>  
+         {Auth.loggedIn()? <SavedDogs/> : null}  
     </div>
   );
 };
