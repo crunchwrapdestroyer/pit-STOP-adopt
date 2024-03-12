@@ -8,8 +8,8 @@ import PitSearch from './pages/SearchResults.jsx';
 import Adopt from './pages/Adopt.jsx';
 import News from './pages/News.jsx';
 import Donate from './pages/Donate.jsx';
-import Success from './pages/success.jsx';
-import Cancel from './pages/cancel.jsx'
+import Success from './pages/Success.jsx';
+import Cancel from './pages/Cancel.jsx'
 
 
 
