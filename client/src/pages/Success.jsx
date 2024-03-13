@@ -9,7 +9,7 @@ function Success() {
             
                 <Col>
                     <h1>Your payment was successful! Thank you for your donation!</h1>
-                    <img src='./public/assets/happypit.jpg' alt='smilepit' className="img-fluid" />
+                    <img src='./assets/happypit.jpg' alt='smilepit' className="img-fluid" />
                 </Col>
             
         </Container>

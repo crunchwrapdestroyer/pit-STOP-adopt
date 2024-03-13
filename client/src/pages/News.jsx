@@ -34,8 +34,8 @@ function News() {
                     </div>
                     <h2>Resources</h2>
                     <div className='books'>
-                        <a href="https://shorturl.at/rszI5" target="_blank" rel="noopener noreferrer"> <img src="./public/assets/pitbullBook1.jpg" alt="" /></a>
-                        <a href="https://shorturl.at/djnxU" target="_blank" rel="noopener noreferrer"> <img src="./public/assets/pitbullBook2.jpg" alt="" /></a>
+                        <a href="https://shorturl.at/rszI5" target="_blank" rel="noopener noreferrer"> <img src="./assets/pitbullBook1.jpg" alt="" /></a>
+                        <a href="https://shorturl.at/djnxU" target="_blank" rel="noopener noreferrer"> <img src="./assets/pitbullBook2.jpg" alt="" /></a>
                     </div>
                 </Col>
             </Row>
